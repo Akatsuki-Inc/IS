@@ -1,9 +1,9 @@
-/*
- * Incidencia.h
- *
- *  Created on: 29 nov. 2020
- *      Author: Alberto Adamuz Priego
- */
+//*
+* Incidencia.h
+*
+*  Created on: 29 nov. 2020
+*      Author: Alberto Adamuz Priego
+*/
 
 #ifndef INCIDENCIA_H_
 #define INCIDENCIA_H_
@@ -14,9 +14,8 @@ using namespace std;
 
 struct Ubicacion
 {
-	float x;
-	float y;
-	float z;
+	float latitud;
+	float longitud;
 };
 
 class Incidencia 
