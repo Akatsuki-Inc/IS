@@ -89,20 +89,13 @@ class Monitor
             contraseña_ = contraseña;
         }
 
-        void crearRuta(){
+        void crearRuta();
 
-        }
+        void actualizarRuta(int identificador);
 
-        void actualizarRuta(int identificador){
+        void cancelaRuta(int identificador);
 
-        }
-
-        void cancelaRuta(){
-
-        }
-        void crearIncidencia(){
-
-        }
+        void crearIncidencia();
 
         string generarContraseña(int size);
 
