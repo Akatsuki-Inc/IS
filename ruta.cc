@@ -131,7 +131,7 @@ void Ruta:: borrarVisitante(){
 }
 
 
-void Ruleta:: setSenderos(list <Sendero> senderos){
+void Ruta:: setSenderos(list <Sendero> senderos){
     senderos_=senderos;
 }
 
