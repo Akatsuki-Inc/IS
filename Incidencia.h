@@ -1,5 +1,5 @@
-//*
-* Incidencia.h
+/*
+* incidencia.h
 *
 *  Created on: 29 nov. 2020
 *      Author: Alberto Adamuz Priego
