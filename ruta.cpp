@@ -1,11 +1,11 @@
 /*
- * Ruta.cpp
+ * ruta.cpp
  *
  *  Created on: 29 nov. 2020
  *      Author: USUARIO
  */
 
-#include "Ruta.h"
+#include "ruta.h"
 
 Ruta::Ruta() {
 	// TODO Auto-generated constructor stub
