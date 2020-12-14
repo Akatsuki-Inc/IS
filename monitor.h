@@ -20,7 +20,7 @@ class Monitor
 	private:
         string nombre_, DNI_, fechaNacimiento_, direccion_, correo_,
         parque_, contraseña_;
-        int telefono;
+        int telefono_;
         list <Ruta> rutas_;
 
 	public:
@@ -70,9 +70,6 @@ class Monitor
 
         inline list <Ruta> getRuta(){
             return rutas_;
-        }
-        inline void setRuta(Ruta rutas){
-            rutas_ = rutas;
         }
 
 		inline string getParque(){
