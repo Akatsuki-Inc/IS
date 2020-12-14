@@ -1,10 +1,3 @@
-/*
- * ruta.h
- *
- *  Created on: 29 nov. 2020
- *      Author: Alberto Adamuz Priego
- */
-
 #ifndef RUTA_H_
 #define RUTA_H_
 #include "visitante.h"
@@ -18,7 +11,7 @@ using namespace std;
 class Ruta 
 {
 	private:
-		int identificador_;
+	int identificador_;
         string tipo_;
         string modalidad_;
         string actividades_;
@@ -32,8 +25,8 @@ class Ruta
         bool aforo_disponible_;
 
 	public:
-		Ruta();
-		int inline getIdentificador() const {return identificador_;}
+	Ruta();
+	int inline getIdentificador() const {return identificador_;}
         string inline getTipo() const {return tipo_;}
         bool setTipo(string tipo);
         string inline getModalidad() const{return modalidad_;}
@@ -54,8 +47,8 @@ class Ruta
         void anadirVisitante();
         void borrarVisitante();
         list<Sendero> inline getSenderos() const {return senderos_;}
-        void setSenderos();
-		virtual ~Ruta();
+        void setSenderos(list <Sendero> senderos);
+	virtual ~Ruta();
 };
 
 #endif /* RUTA_H_ */
