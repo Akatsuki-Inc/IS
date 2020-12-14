@@ -1,4 +1,7 @@
 #include "parque.h"
+
+Parque::Parque(){}
+
 void Parque::ListarSenderos()
 {
     cout<<"Nombre"<<endl;
@@ -100,7 +103,7 @@ void Parque::añadirMonitor()
     {
         cout<<"El monitor ya existe"<<endl;
     }
-    
+
 }
 
 void Parque::borrarMonitor()
@@ -144,11 +147,11 @@ void Parque::borrarMonitor()
             {
                 aux3++;
             }
-            
+
         }while(aux3==0);
 
     }
-    
+
 }
 
 void Parque::modificaMonitor()
@@ -190,7 +193,7 @@ void Parque::modificaMonitor()
 
                     newmonitor.setNombre(aux);
                     break;
-            
+
                 case 2:
                     cout<<"Introduce el nuevo DNI"<<endl;
                     cin>>aux;
@@ -204,21 +207,21 @@ void Parque::modificaMonitor()
 
                     newmonitor.setCorreo(aux);
                     break;
-            
+
                 case 4:
                     cout<<"Introduce la nueva fecha de nacimiento"<<endl;
                     cin>>aux;
 
                     newmonitor.setFechaNacimiento(aux);
                     break;
-            
+
                 case 5:
                     cout<<"Introduce la nueva direccion"<<endl;
                     cin>>aux;
 
                     newmonitor.setDireccion(aux);
                     break;
-            
+
                 case 6:
                     cout<<"Introduce el nuevo telefono"<<endl;
                     cin>>aux3;
@@ -293,7 +296,7 @@ void Parque::añadirSendero()
     {
         cout<<"El sendero ya existe"<<endl;
     }
-    
+
 }
 
 void Parque::actualizaRutas()
@@ -325,7 +328,178 @@ void Parque::actualizaRutas()
             {
                 Ruta_.push_back(*rm);
             }
-    
+
         }
     }
+} 
+
+void Parque::modificarSendero(){
+        Sendero sendero;
+        int eleccion, n, respuesta_i;
+        string respuesta_s;
+        cout << "¿Quiere que se le desplieguen los nombres de los senderos registrados? [S] [N]\n";
+        while(1){
+            cin >> respuesta_s;
+            if (respuesta_s == "S"){
+                ListarSenderos();
+                break;
+            }
+            else if(respuesta_s == "N"){
+                break;
+            }
+            else{
+                cout << "ERROR: Por favor, introduzca una de las opciones disponibles [S] [N]\n";
+            }
+        }
+		cout << "Indique el nombre del sendero que quiere modificar \n";
+        cin >> respuesta_s;
+
+
+        //nombre, breve descripción, su grado de dificultad, la longitud de éstos, disponibilidad
+        while(1){
+            if(BuscarSendero(respuesta_s, getSendero()==false){
+                cout << "El sendero elegido no se encuentra entre los requistrados, inténtelo de nuevo \n";
+            }
+            else{
+                for(s_=getSendero().begin();s_!=getSendero().end();s_++){
+                    if((*s_).getNombre()==respuesta_s){
+                        sendero(*s_);
+                        getSendero().erase(s_);
+                    }
+                    while(1){
+                        cout << "Eliga una de los atributos que quiera modificar\n"
+                        cout << "1) Nombre \n";
+                        cout << "2) Brebe descripción \n";
+                        cout << "3) Dificultad \n";
+                        cout << "4) Longitud \n";
+                        cout << "5) Disponibilidad \n";
+                        cout << "6) Salir\n"
+
+                        cin >> eleccion;
+
+                        while(n==1){
+                            switch (eleccion)
+                            {
+                                
+                                case 1: 
+                                    cout << "Introduzca el nuevo nombre del sendero: \n";
+                                    cin >> respuesta_s;
+                                    sendero.setNombre(respuesta_s)
+
+                                case 2:
+                                    cout << "Introduzca la descripición: \n";
+                                    cin >> respuesta_s;
+                                    sendero.setDescripcion(respuesta_s)
+                                    break;
+
+                                case 3:
+                                    cout << "Introduzca la dificultad: \n";
+                                    cin >> respuesta_s;
+                                    sendero.setDificultad(respuesta_s);
+                                    break;
+                                
+                                case 4:
+                                    cout << "Introduzca la longitud: \n";
+                                    cin >> respuesta_i;
+                                    sendero.setLongitud(respuesta_i);
+                                    break;
+                                
+                                case 5:
+                                    cout << "Introduzca su disponibilidad: \n";
+                                    cin >> respuesta_s;
+                                    sendera.setDisponibilidad(respuesta_s);
+                                    break;
+                                
+                                case 6:
+                                    cout << "   Saliendo del menu... \n" ;
+                                    n=0;
+                                    break;
+                                
+                                default:
+                                    cout << "Su elección no está en el menú, por favor seleccione una opción válida \n"
+                                    break;
+                                }
+                            }
+                            getSendero_.push_back(sendero);
+                        }
+                }
+            }
+        }
+	}
+
+void Parque::dividirGrupo(int identificador, Monitor monitor){
+    Ruta ruta;
+    list <Visitante> n_visitantes;
+
+    int i=0;
+
+    for(s_=getRutas().begin();s_!=getRutas().end();s_++){
+            if((*s_).getIdentificador()==identificador){
+                ruta(*s_);
+                for(v_=(*s_).getVisitantes().end();s_!=(*s_).getVisitantes().begin();v_--){
+                        while((i>=(*v_).getAforo()/2)&&(i>=(*s_).getAforo()){
+                            n_visitantes.push_back(*v_);
+                            (*s_).getVisitantes().pop_back();                   
+                        }
+                }
+            }
+    }
+    ruta.setVisitantes(n_visitantes);
+    ruta.setMonitor(monitor);
+    getRutas().push_back(ruta);
+}
+
+void Parque::cambiaMonitor(Monitor monitor){
+
+    cout << "Elija el identificador de la ruta que quiere cambiar el monitor\n";
+    cin >> identificador;
+    for(s_=getRutas().begin();s_!=getRutas().end();s_++){
+            if((*s_).getIdentificador()==identificador){
+                (*s_).setMonitor(monitor);
+            }
+    }
+
+}
+
+void Parque::borrarIncidencia(){
+    int identificador;
+    cout << "Introduce el identificador de la incidencia\n";
+    cin >> identificador;
+
+    for(s_=getIncidencias().begin();s_!=getIncidencias().end();s_++){
+            if((*s_).getIdentificador()==identificador){
+                getIncidencias().erase(s_);
+            }
+    }
+}
+
+void Parque::añadirIncidencia(Incidencia incidencia){
+    float latitud, longitud;
+    string parque, sendero, descripcion;
+
+    cout << "Introduzca el sendero donde se encuentra la incidencia";
+    cin >> respuesta_s;
+
+    cout << "Introduzca el nombre del parque: ";
+    cin >> incidencia.parque;
+    cout << "\n";
+
+    cout << "Introduzca el nombre del sendero: ";
+    cin >> incidencia.sendero;
+    cout << "\n";
+
+    cout << "Introduzca una breve descripción de la incidencia que ha encontrado:\n"
+    cin >> incidencia.descripcion;
+
+    cout << "A continuacion, introduzca la latitud en la que se encuentra: ";
+    cin >> incidencia.latitud;
+
+    cout << "A continuacion, introduzca la longitud en la que se encuentra: ";
+    cin >> incidencia.longitud;
+
+    getIncidencias().push_back(incidencia);
+}
+
+Parque::~Parque() {
+
 }
