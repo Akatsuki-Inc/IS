@@ -1,6 +1,7 @@
 #ifndef RUTA_H_
 #define RUTA_H_
 #include "visitante.h"
+#include "sendero.h"
 #include <iostream>
 #include <string>
 #include <list>
@@ -16,13 +17,14 @@ class Ruta
         string modalidad_;
         string actividades_;
         time_t fecha_;
-        float longitud;
+        float longitud_;
         int duracion_;
         int aforo_;
-        bool rutaNiÃ±os_;
+        bool rutaNiños_;
         list<Visitante> visitantes_;
         list<Sendero> sendero_;
         bool aforo_disponible_;
+
 
 	public:
 	Ruta();
@@ -41,13 +43,14 @@ class Ruta
         void inline setDuracion(int duracion){duracion_=duracion;}
         int inline getAforo() const {return aforo_;}
         void inline setAforo(int aforo){aforo_=aforo;}
-        bool inline getrutaNinos() const {return rutaNiÃ±os_;}
-        void inline setrutaNinos(bool opcion){rutaNiÃ±os_=opcion;}
+        bool inline getrutaNinos() const {return rutaNiños_;}
+        void inline setrutaNinos(bool opcion){rutaNiños_=opcion;}
         list<Visitante> inline getVisitantes() const {return visitantes_;}
-        void anadirVisitante();
+        void añadirVisitante();
         void borrarVisitante();
-        list<Sendero> inline getSenderos() const {return senderos_;}
+        list<Sendero> inline getSenderos() const {return sendero_;}
         void setSenderos(list <Sendero> senderos);
+        void inline setVisitantes(list<Visitante> visitantes){visitantes_=visitantes;}
 	virtual ~Ruta();
 };
 

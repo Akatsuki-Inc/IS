@@ -15,8 +15,9 @@ using namespace std;
 class Visitante 
 {
 	private:
-        string nombre_, DNI_, condiciones;
-        int telefono;
+        string nombre_, DNI_, condiciones_;
+        string fechaNacimiento_;
+        int telefono_;
 
 	public:
 		Visitante();

@@ -12,6 +12,7 @@
 #include <list>
 #include <ctime>
 #include "ruta.h"
+#include "parque.h"
 
 using namespace std;
 
@@ -19,10 +20,12 @@ class Monitor
 {
 	private:
         string nombre_, DNI_, fechaNacimiento_, direccion_, correo_,
-        parque_, contraseÃ±a_;
+        parque_, contraseña_;
         int telefono_;
         list <Ruta> rutas_;
+        list <Ruta>::iterator r_;
 
+        bool buscarRuta(int identificador,Ruta &ruta);
 	public:
 		Monitor();
 
@@ -79,22 +82,24 @@ class Monitor
             parque_ = parque;
         }
 
-		inline string getContraseÃ±a(){
-            return contraseÃ±a_;
+		inline string getContraseña(){
+            return contraseña_;
         }
-        inline void setContraseÃ±a(string contraseÃ±a){
-            contraseÃ±a_ = contraseÃ±a;
+        inline void setContraseña(string contraseña){
+            contraseña_ = contraseña;
         }
 
         void crearRuta();
 
         void actualizarRuta(int identificador);
 
-        void cancelaRuta(int identificador);
+        bool cancelaRuta(int identificador);
 
-        void crearIncidencia();
+        Incidencia crearIncidencia();
 
-        string generarContraseÃ±a(int size);
+        string generarContraseña(int size);
+
+        void añadirRuta(Ruta ruta){rutas_.push_back(ruta);}
 
 		virtual ~Monitor();
 };

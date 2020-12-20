@@ -1,4 +1,4 @@
- /*
+/*
  * monitor.cpp
  *
  *  Created on: 29 nov. 2020
@@ -7,72 +7,87 @@
 
 #include "monitor.h"
 
-Monitor::Monitor(){}
+bool buscarRuta(int identificador, Ruta &ruta)
+{
+	for(r_=rutas_.begin();r_!=rutas_.end();r_++)
+	{
+		if((*r_).getIdentificador()==identificador)
+		{
+			ruta=(*r_);
+			return true;
+		}
+	}
+
+	return false;
+}
 
 void Monitor::crearRuta(){
         Ruta ruta;
-        int eleccion, respuesta_i;
+        int eleccion=0, respuesta_i;
         string respuesta_s;
         cout << "1) Tipo \n";
         cout << "2) Modalidad \n";
         cout << "3) Longitud \n";
-        cout << "4) Duraci√≥n estimada \n";
-        cout << "5) Aforo m√°ximo \n";
-        cout << "6) ¬øNi√±os? \n";
+        cout << "4) DuraciÛn estimada \n";
+        cout << "5) Aforo m·ximo \n";
+        cout << "6) øNiÒos? \n";
         cout << "7) Terminar \n";
 
-        while(n==1){
+        while(eleccion!=7){
             switch (eleccion)
             {
                 
-                case 1: 
-                    cout << "Introduzca el parque al que pertenece: \n";
-                    cin >> respuesta_s;
-                    ruta.setParque(respuesta_s)
-
-                case 2:
+                case 1:
                     cout << "Introduzca el tipo: \n";
                     cin >> respuesta_s;
                     ruta.setTipo(respuesta_s);
                     break;
 
-                case 3:
+                case 2:
                     cout << "Introduzca la modalidad: \n";
                     cin >> respuesta_s;
                     ruta.setModalidad(respuesta_s);
                     break;
                 
-                case 4:
+                case 3:
                     cout << "Introduzca la longitud: \n";
                     cin >> respuesta_i;
                     ruta.setLongitud(respuesta_i);
                     break;
                 
-                case 5:
+                case 4:
                     cout << "Introduzca su duracion: \n";
                     cin >> respuesta_i;
                     ruta.setDuracion(respuesta_i);
                     break;
                 
-                case 6:
+                case 5:
                     cout << "Introduzca el aforo maximo: \n";
                     cin >> respuesta_i;
                     ruta.setAforo(respuesta_i);
                     break;
             
-                case 7:
-                    cout << "Introduzca si es una ruta de ni√±os: \n";
+                case 6:
+                    cout << "Introduzca si es una ruta de niÒos: \n";
                     cin >> respuesta_s;
-                    ruta.setRutaNi√±os(respuesta_s);
+
+                    if(respuesta_s=="si"||respuesta_s=="Si")
+                    {
+                    	ruta.setrutaNinos(true);
+                    }
+
+                    else
+                    {
+                    	ruta.setrutaNinos(false);
+                    }
                     break;
             
-                case 8:
+                case 7:
                     cout << "   Saliendo del menu... \n" ;
-                    n=0;
                     break;
                 
                 default:
-                    cout << "Su elecci√≥n no est√° en el men√∫, por favor seleccione una opci√≥n v√°lida \n"
+                    cout << "Su elecciÛn no est· en el men˙, por favor seleccione una opciÛn v·lida \n"
                     break;
                 }
             }
@@ -85,16 +100,16 @@ void Monitor::actualizarRuta(int identificador){
             int respuesta_i, eleccion;
             cout << "Indique el identificador de la ruta que quiera actualizar \n";
             cin >> identificador;
-            Ruta = buscarRuta(identificador);
+            buscarRuta(identificador,ruta);
             cout << "1) Tipo \n";
             cout << "2) Modalidad \n";
             cout << "3) Longitud \n";
-            cout << "4) Duraci√≥n estimada \n";
-            cout << "5) Aforo m√°ximo \n";
-            cout << "6) ¬øNi√±os? \n";
+            cout << "4) DuraciÛn estimada \n";
+            cout << "5) Aforo m·ximo \n";
+            cout << "6) øNiÒos? \n";
             cout << "7) Terminar \n";
 
-            while(n==1){
+            while(eleccion!=7){
                 switch (eleccion)
                 {
                     case 1:
@@ -105,7 +120,7 @@ void Monitor::actualizarRuta(int identificador){
                         break;
 
                     case 2:
-                        cout << "   Modalidad actual: " << ruta.Modalidad();
+                        cout << "   Modalidad actual: " << ruta.getModalidad();
                         cout << "Introduzca su respuesta: \n";
                         cin >> respuesta_s;
                         ruta.setModalidad(respuesta_s);
@@ -119,46 +134,45 @@ void Monitor::actualizarRuta(int identificador){
                         break;
                 
                     case 4:
-                        cout << "   Duraci√≥n actual: " << ruta.getDuracion();
+                        cout << "   DuraciÛn actual: " << ruta.getDuracion();
                         cout << "Introduzca su respuesta: \n";
                         cin >> respuesta_i;
                         ruta.setDuracion(respuesta_i);
                         break;
                 
                     case 5:
-                        cout << "   Aforo m√°ximo actual: " << ruta.getAforo();
+                        cout << "   Aforo m·ximo actual: " << ruta.getAforo();
                         cout << "Introduzca su respuesta: \n";
                         cin >> respuesta_i;
                         ruta.setAforo(respuesta_i);
                         break;
                 
                     case 6:
-                        cout << "   ¬øRuta de ni√±os?: " << ruta.RutaNi√±os();
+                        cout << "   øRuta de niÒos?: " << ruta.getrutaNinos();
                         cout << "Introduzca su respuesta: \n";
                         cin >> respuesta_s;
-                        ruta.setRutaNi√±os(respuesta_s);
+                        ruta.setrutaNinos(true);
                         break;
                 
                     case 7:
                         cout << "   Saliendo del menu... \n" ;
-                        n=0;
                         break;
                 
                     default:
-                        cout << "Su elecci√≥n no est√° en el men√∫, por favor seleccione una opci√≥n v√°lida \n"
+                        cout << "Su elecciÛn no est· en el men˙, por favor seleccione una opciÛn v·lida \n"
                         break;
                     }
                 }
                 rutas_.push_back(ruta);
         }
 
-void Monitor::cancelaRuta(int identificador){
+bool Monitor::cancelaRuta(int identificador){
     list<Ruta>::iterator pos;
     pos = rutas_.begin();
 			if(!rutas_.empty()){
 				for(long unsigned int i = 0; i<rutas_.size(); i++){
 					if((*pos).getIdentificador()==identificador()){
-						rutas_.erase(*pos);
+						rutas_.erase(pos);
                         return true;
 					}
 					pos++;
@@ -168,34 +182,39 @@ void Monitor::cancelaRuta(int identificador){
             return false;
 }
 
-void Monitor::crearIncidencia(){
+Incidencia Monitor::crearIncidencia(){
     float latitud, longitud;
-    string parque, sendero, descripcion;
+    string aux;
     Incidencia incidencia;
-
-    cout << "Introduzca el nombre del parque: ";
-    cin >> incidencia.parque;
-    cout << "\n";
+    Ubicacion ubicacion;
 
     cout << "Introduzca el nombre del sendero: ";
-    cin >> incidencia.sendero;
+    cin >> aux;
+    incidencia.setSendero(aux);
     cout << "\n";
 
-    cout << "Introduzca una breve descripci√≥n de la incidencia que ha encontrado:\n"
-    cin >> incidencia.descripcion;
+    cout << "Introduzca una breve descripciÛn de la incidencia que ha encontrado:\n"
+    cin >> aux;
+    incidencia.setDescripcion(aux);
+    cout << "\n";
 
     cout << "A continuacion, introduzca la latitud en la que se encuentra: ";
-    cin >> incidencia.latitud;
+    cin >> latitud;
 
     cout << "A continuacion, introduzca la longitud en la que se encuentra: ";
-    cin >> incidencia.longitud;
+    cin >> longitud;
 
-    incidencias_.push_back(incidencia);
+    ubicacion.latitud=latitud;
+    ubicacion.longitud=longitud;
+
+    incidencia.setUbicacion(ubicacion);
+
+    return incidencia;
 }
 
-string Monitor::generarContrase√±a(int size) {
+string Monitor::generarContraseÒa(int size) {
     
-    string contrase√±a;
+    string contraseÒa;
     static const char alphanum[] =
         "0123456789"
         "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -209,9 +228,10 @@ string Monitor::generarContrase√±a(int size) {
         tmp_s += alphanum[rand() % (sizeof(alphanum) - 1)];
     
     
-    return contrase√±a;
+    return contraseÒa;
     
 }
 Monitor::~Monitor() {
 
 }
+

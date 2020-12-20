@@ -21,7 +21,7 @@ bool Ruta::setTipo(string tipo)
 
 bool Ruta::setModalidad(string modalidad)
 {
-   if((modalidad=="Pie")||(tipo=="Bicicleta"))
+   if((modalidad=="Pie")||(modalidad=="Bicicleta"))
     {
         modalidad_=modalidad;
         return true;
@@ -48,7 +48,7 @@ bool Ruta::setFecha(time_t fecha)
     }
 }
 
-void Ruta::añadirvisitante(){
+void Ruta::a�adirVisitante(){
     Visitante visitante;
     string aux_s;
     int aux_i;
@@ -58,11 +58,9 @@ void Ruta::añadirvisitante(){
     cout<<"Introduzca el DNI del visitante"<<endl;
     cin>> aux_s;
 
-    visitante.setDNI(aux_s){
-        DNI_=aux_s;
-    }
+    visitante.setDNI(aux_s);
 
-    for(long unsigned int i=0; i<visiantes_.size();i++){
+    for(long unsigned int i=0; i<visitantes_.size();i++){
         if((*it).getDNI()==visitante.getDNI()){
             cout<<"Ya existe un visitante con el DNI: "<<
             visitante.getDNI()<<endl;
@@ -74,33 +72,24 @@ void Ruta::añadirvisitante(){
     cout<<"Introduzca el nombre del visitante"<<endl;
     cin>> aux_s;
 
-    visitante.setNombre(aux_s){
-        nombre_= aux_s;
-    }
+    visitante.setNombre(aux_s);
 
-    cout<<"Introduzca el teléfono del visitante"<<endl;
+    cout<<"Introduzca el tel�fono del visitante"<<endl;
     cin>> aux_i;
 
-    visitante.setTelefono(aux_i){
-        telefono_= aux_i;
-    }
+    visitante.setTelefono(aux_i);
 
     cout<<"Introduzca la fecha de nacimiento  del visitante"<<endl;
     cin>> aux_s;
 
-    visitante.setFechaNacimiento(aux_s){
-        fechaNacimiento_= aux_s;
-    }
+    visitante.setFechaNacimiento(aux_s)
 
-    cout<<"Introduzca las afecciones del visitante. Si no presenta ninguna,
-    introduzca *NINGUNA*"<<endl;
+    cout<<"Introduzca las afecciones del visitante. Si no presenta ninguna,introduzca *NINGUNA*"<<endl;
     cin>> aux_s;
 
-    visitante.setCondiciones(aux_s){
-        condiciones_= aux_s;
-    }
+    visitante.setCondiciones(aux_s);
 
-    visiantes_.push_back(visitante);
+    visitantes_.push_back(visitante);
 }
 
 void Ruta:: borrarVisitante(){
@@ -119,12 +108,12 @@ void Ruta:: borrarVisitante(){
     if(!visitantes_.empty()){  
         list <Visitante>::iterator it; 
         it=visitantes_.begin();
-        for(long unsigned int j=0;j<jugadores_.size();j++){
+        for(long unsigned int j=0;j<visitantes_.size();j++){
             if((*it).getDNI()==DNI){    
                 visitantes_.erase(it);
                 cout<<"El visitante ha sido eliminado"<<endl;
             }
-            i++;
+            j++;
         }
         cout<<"No se ha podido encontrar el DNI"<<endl;
     }
@@ -132,9 +121,10 @@ void Ruta:: borrarVisitante(){
 
 
 void Ruta:: setSenderos(list <Sendero> senderos){
-    senderos_=senderos;
+    sendero_=senderos;
 }
 
 Ruta::~Ruta() {
 	// TODO Auto-generated destructor stub
 }
+

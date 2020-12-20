@@ -1,7 +1,5 @@
 #include "parque.h"
 
-Parque::Parque(){}
-
 void Parque::ListarSenderos()
 {
     cout<<"Nombre"<<endl;
@@ -18,6 +16,7 @@ bool Parque::BuscarSendero(string nombre,Sendero &sendero)
     {
         if((*s_).getNombre()==nombre)
         {
+        	sendero=(*s_);
             return true;
         }
     }
@@ -49,7 +48,7 @@ bool Parque::BuscarMonitor(string DNI,Monitor &monitor)
     return false;
 }
 
-void Parque::a√±adirMonitor()
+void Parque::aÒadirMonitor()
 {
     Monitor monitor;
     string aux;
@@ -92,9 +91,9 @@ void Parque::a√±adirMonitor()
 
         monitor.setParque(aux);
 
-        monitor.setContrase√±a(monitor.generarContrase√±a(9));
+        monitor.setContraseÒa(monitor.generarContraseÒa(9));
 
-        cout<<"Esta es su contrase√±a: "<<monitor.getContrase√±a()<<endl;
+        cout<<"Esta es su contraseÒa: "<<monitor.getContraseÒa()<<endl;
 
         Monitor_.push_back(monitor);
     }
@@ -126,7 +125,7 @@ void Parque::borrarMonitor()
     else
     {
         do{
-            cout<<"¬øSeguro que quiere borrar al siguiente Monitor? Se perferan todos sus datos"<<endl;
+            cout<<"øSeguro que quiere borrar al siguiente Monitor? Se perferan todos sus datos"<<endl;
             cout<<monitor.getNombre()<<" con DNI "<<monitor.getDNI()<<endl;
             cout<<"1.Borrar\n2.Cancelar"<<endl;
             cin>>aux2;
@@ -254,7 +253,7 @@ void Parque::modificaMonitor()
 
 }
 
-void Parque::a√±adirSendero()
+void Parque::aÒadirSendero()
 {
     Sendero sendero;
     string aux;
@@ -289,7 +288,7 @@ void Parque::a√±adirSendero()
 
         Sendero_.push_back(sendero);
 
-        cout<<"Sendero a√±adido con exito"<<endl;
+        cout<<"Sendero aÒadido con exito"<<endl;
     }
 
     else
@@ -334,172 +333,191 @@ void Parque::actualizaRutas()
 } 
 
 void Parque::modificarSendero(){
-        Sendero sendero;
-        int eleccion, n, respuesta_i;
+        Sendero oldsendero;
+        Sendero newsendero;
         string respuesta_s;
-        cout << "¬øQuiere que se le desplieguen los nombres de los senderos registrados? [S] [N]\n";
-        while(1){
-            cin >> respuesta_s;
-            if (respuesta_s == "S"){
-                ListarSenderos();
-                break;
-            }
-            else if(respuesta_s == "N"){
-                break;
-            }
-            else{
-                cout << "ERROR: Por favor, introduzca una de las opciones disponibles [S] [N]\n";
-            }
-        }
-		cout << "Indique el nombre del sendero que quiere modificar \n";
-        cin >> respuesta_s;
+        int respuesta_i;
+        int eleccion=0;
 
+        ListarSenderos();
 
-        //nombre, breve descripci√≥n, su grado de dificultad, la longitud de √©stos, disponibilidad
-        while(1){
-            if(BuscarSendero(respuesta_s, getSendero()==false){
-                cout << "El sendero elegido no se encuentra entre los requistrados, int√©ntelo de nuevo \n";
-            }
-            else{
-                for(s_=getSendero().begin();s_!=getSendero().end();s_++){
-                    if((*s_).getNombre()==respuesta_s){
-                        sendero(*s_);
-                        getSendero().erase(s_);
-                    }
-                    while(1){
-                        cout << "Eliga una de los atributos que quiera modificar\n"
+        cout<<"Introduzca el DNI del Monitor que quiere modificar"<<endl;
+        cin>>respuesta_s;
+
+        if(BuscarSendero(respuesta_s,oldsendero)==true)
+			{
+            	newsendero=oldsendero;
+
+        		while(eleccion!=6){
+                        cout << "Eliga una de los atributos que quiera modificar\n";
                         cout << "1) Nombre \n";
-                        cout << "2) Brebe descripci√≥n \n";
+                        cout << "2) Brebe descripciÛn \n";
                         cout << "3) Dificultad \n";
                         cout << "4) Longitud \n";
                         cout << "5) Disponibilidad \n";
-                        cout << "6) Salir\n"
+                        cout << "6) Salir\n";
 
                         cin >> eleccion;
 
-                        while(n==1){
-                            switch (eleccion)
+                        switch (eleccion)
                             {
                                 
                                 case 1: 
                                     cout << "Introduzca el nuevo nombre del sendero: \n";
                                     cin >> respuesta_s;
-                                    sendero.setNombre(respuesta_s)
+                                    newsendero.setNombre(respuesta_s);
+                                    break;
 
                                 case 2:
-                                    cout << "Introduzca la descripici√≥n: \n";
+                                    cout << "Introduzca la descripiciÛn: \n";
                                     cin >> respuesta_s;
-                                    sendero.setDescripcion(respuesta_s)
+                                    newsendero.setDescripcion(respuesta_s)
                                     break;
 
                                 case 3:
                                     cout << "Introduzca la dificultad: \n";
                                     cin >> respuesta_s;
-                                    sendero.setDificultad(respuesta_s);
+                                    newsendero.setDificultad(respuesta_s);
                                     break;
                                 
                                 case 4:
                                     cout << "Introduzca la longitud: \n";
                                     cin >> respuesta_i;
-                                    sendero.setLongitud(respuesta_i);
+                                    newsendero.setLongitud(respuesta_i);
                                     break;
                                 
                                 case 5:
                                     cout << "Introduzca su disponibilidad: \n";
                                     cin >> respuesta_s;
-                                    sendera.setDisponibilidad(respuesta_s);
+                                    newsendero.setDisponibilidad(respuesta_s);
                                     break;
                                 
                                 case 6:
                                     cout << "   Saliendo del menu... \n" ;
-                                    n=0;
                                     break;
                                 
                                 default:
-                                    cout << "Su elecci√≥n no est√° en el men√∫, por favor seleccione una opci√≥n v√°lida \n"
+                                    cout << "Su elecciÛn no est· en el men˙, por favor seleccione una opciÛn v·lida \n"
                                     break;
-                                }
+                             }
+
+                        for(s_=Sendero_.begin();s_!=Sendero_.end();s_++)
+                            {
+                                  if((*s_).getNombre()==oldsendero.getNombre())
+                                         {
+                                             *(s_)=newsendero;
+                                         }
                             }
-                            getSendero_.push_back(sendero);
-                        }
-                }
-            }
+
+                   }
         }
-	}
+}
 
 void Parque::dividirGrupo(int identificador, Monitor monitor){
-    Ruta ruta;
-    list <Visitante> n_visitantes;
+    list <Visitante> visitantes;
+    list <Visitante> visitantes2;
+    list <Visitante>::iterator v;
+    Ruta ruta2;
+    int aux;
 
-    int i=0;
+    for(r_=Ruta_.begin();r_!=Ruta_.end();r_++)
+    {
+    	if((*r_).getIdentificador()==identificador)
+    	{
+    		ruta2=(*r_);
 
-    for(s_=getRutas().begin();s_!=getRutas().end();s_++){
-            if((*s_).getIdentificador()==identificador){
-                ruta(*s_);
-                for(v_=(*s_).getVisitantes().end();s_!=(*s_).getVisitantes().begin();v_--){
-                        while((i>=(*v_).getAforo()/2)&&(i>=(*s_).getAforo()){
-                            n_visitantes.push_back(*v_);
-                            (*s_).getVisitantes().pop_back();                   
-                        }
-                }
-            }
+    		visitantes=(*r_).getVisitantes;
+
+    		for(v=visitantes.begin();v!=visitantes.end();v++)
+    		{
+    			if(aux>(*r_).getAforo()/2)
+    			{
+    				visitantes2.push_back(*v);
+    				visitantes.erase(v);
+    			}
+
+    			aux++;
+    		}
+
+    		(*r_).setVisitantes(visitantes);
+    		ruta2.setVisitantes(visitantes2);
+
+    		time_t aux=ruta2.getFecha();
+    		aux+=300;
+    		ruta2.setFecha(aux);
+    	}
     }
-    ruta.setVisitantes(n_visitantes);
-    ruta.setMonitor(monitor);
-    getRutas().push_back(ruta);
+
+    cambiaMonitor(ruta2,aux);
 }
 
-void Parque::cambiaMonitor(Monitor monitor){
+void Parque::cambiaMonitor(Ruta ruta, time_t aux){
 
-    cout << "Elija el identificador de la ruta que quiere cambiar el monitor\n";
-    cin >> identificador;
-    for(s_=getRutas().begin();s_!=getRutas().end();s_++){
-            if((*s_).getIdentificador()==identificador){
-                (*s_).setMonitor(monitor);
-            }
+	int libre=1;
+	int asignado=0;
+	list <Ruta> rutas;
+
+	for(m_=Monitor_.begin();m_!=Monitor_.end();m_++)
+	{
+
+		if(asignado==0)
+		{
+			for(r_=rutas.begin();r_!=rutas.end();r_++)
+
+			{
+				if((*r_).getFecha==aux)
+				{
+					libre=0;
+				}
+			}
+
+			if(libre==0)
+			{
+				libre=1;
+			}
+
+			else
+			{
+				(*m_).aÒadirRuta(ruta);
+				asignado=1;
+			}
+
+		}
+	}
+
+}
+
+void Parque::borrarIncidencia(int identificador){
+
+	for(i_=Incidencia_.begin();i_!=Incidencia_.end();i_++)
+	    {
+	    	if((*i_).getIdentificador()==identificador)
+	    	{
+	    		Incidencia_.erase(i_);
+	    	}
+	    }
+}
+
+void Parque::aÒadirIncidencia(Incidencia incidencia){
+
+	int existe=0;
+
+	for(i_=Incidencia_.begin();i_!=Incidencia_.end();i_++)
+    {
+    	if((*i_).getIdentificador()==incidencia.getIdentificador())
+    	{
+    		existe=1;
+    	}
     }
 
+	if(existe==0)
+	{
+		Incidencia_.push_back(incidencia);
+	}
+
+	else
+	{
+		cout<<"Error, la incidencia ya esta registrada"<<endl;
+	}
 }
 
-void Parque::borrarIncidencia(){
-    int identificador;
-    cout << "Introduce el identificador de la incidencia\n";
-    cin >> identificador;
-
-    for(s_=getIncidencias().begin();s_!=getIncidencias().end();s_++){
-            if((*s_).getIdentificador()==identificador){
-                getIncidencias().erase(s_);
-            }
-    }
-}
-
-void Parque::a√±adirIncidencia(Incidencia incidencia){
-    float latitud, longitud;
-    string parque, sendero, descripcion;
-
-    cout << "Introduzca el sendero donde se encuentra la incidencia";
-    cin >> respuesta_s;
-
-    cout << "Introduzca el nombre del parque: ";
-    cin >> incidencia.parque;
-    cout << "\n";
-
-    cout << "Introduzca el nombre del sendero: ";
-    cin >> incidencia.sendero;
-    cout << "\n";
-
-    cout << "Introduzca una breve descripci√≥n de la incidencia que ha encontrado:\n"
-    cin >> incidencia.descripcion;
-
-    cout << "A continuacion, introduzca la latitud en la que se encuentra: ";
-    cin >> incidencia.latitud;
-
-    cout << "A continuacion, introduzca la longitud en la que se encuentra: ";
-    cin >> incidencia.longitud;
-
-    getIncidencias().push_back(incidencia);
-}
-
-Parque::~Parque() {
-
-}

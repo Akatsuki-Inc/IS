@@ -14,3 +14,4 @@ Visitante::Visitante() {
 Visitante::~Visitante() {
 
 }
+

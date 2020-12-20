@@ -23,6 +23,7 @@ private:
 	list <Monitor> Monitor_;
     list <Monitor>::iterator m_;
 	list <Incidencia> Incidencia_;
+	list <Incidencia>::iterator i_;
 
     void ListarSenderos();
 	bool BuscarSendero(string nombre,Sendero &sendero);
@@ -54,10 +55,10 @@ public:
 	void setFecha(string fechaReconocimiento){
 		fechaReconocimiento_=fechaReconocimiento;
 	}
-//Añadido
-    inline list <Incidencia> getIncidencia(return Incidencia_)
 
-	inline list <Sendero> getSendero(){return Sendero_;}
+    list <Incidencia> inline getIncidencia(){return Incidencia_;}
+
+	list <Sendero> inline getSendero(){return Sendero_;}
 
 	inline list <Ruta> getRutas(){return Ruta_;}
 
@@ -65,25 +66,25 @@ public:
 
 	void modificarSendero();
 
-	void añadirSendero();
+	void a�adirSendero();
 
 	inline list <Monitor> getMonitores(){return Monitor_;}
 
-	void añadirMonitor();
+	void a�adirMonitor();
 
 	void borrarMonitor();
 
 	void modificaMonitor();
 
-	void dividirGrupo();
+	void dividirGrupo(int identificador, Monitor monitor);
 
-	void cambiaMonitor();
+	void cambiaMonitor(Ruta ruta,time_t aux);
 
 	inline list <Incidencia> getIncidencias(){return Incidencia_;}
 
-	void borrarIncidencia();
+	void borrarIncidencia(int identificador);
 
-	void añadirIncidencia(Incidencia incidencia);
+	void a�adirIncidencia(Incidencia incidencia);
 };
 
 
