@@ -30,7 +30,7 @@ class Visitante
         }
         
 		inline string getDNI(){
-            return nombre_;
+            return DNI_;
         }
         inline void setDNI(string DNI){
             DNI_ = DNI;

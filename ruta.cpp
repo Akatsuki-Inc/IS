@@ -1,7 +1,7 @@
 #include "ruta.h"
 Ruta::Ruta()
 {
-    
+
 }
 
 bool Ruta::setTipo(string tipo)
@@ -51,6 +51,7 @@ void Ruta::anadirVisitante(){
     Visitante visitante;
     string aux_s;
     int aux_i;
+    int existe=0;
     list <Visitante>:: iterator it;
     it= visitantes_.begin();
 
@@ -63,37 +64,42 @@ void Ruta::anadirVisitante(){
         if((*it).getDNI()==visitante.getDNI()){
             cout<<"Ya existe un visitante con el DNI: "<<
             visitante.getDNI()<<endl;
+            existe=1;
         }
 
         it++;
     }
 
-    cout<<"Introduzca el nombre del visitante"<<endl;
-    cin>> aux_s;
+    if(existe==0)
+    {
+        cout<<"Introduzca el nombre del visitante"<<endl;
+        cin>>aux_s;
 
-    visitante.setNombre(aux_s);
+        visitante.setNombre(aux_s);
 
-    cout<<"Introduzca el tel�fono del visitante"<<endl;
-    cin>> aux_i;
+        cout<<"Introduzca el tel�fono del visitante"<<endl;
+        cin>> aux_i;
 
-    visitante.setTelefono(aux_i);
+        visitante.setTelefono(aux_i);
 
-    cout<<"Introduzca la fecha de nacimiento  del visitante"<<endl;
-    cin>> aux_s;
+        cout<<"Introduzca la fecha de nacimiento  del visitante"<<endl;
+        cin>> aux_s;
 
-    visitante.setFechaNacimiento(aux_s);
+        visitante.setFechaNacimiento(aux_s);
 
-    cout<<"Introduzca las afecciones del visitante. Si no presenta ninguna,introduzca *NINGUNA*"<<endl;
-    cin>> aux_s;
+        cout<<"Introduzca las afecciones del visitante. Si no presenta ninguna,introduzca *NINGUNA*"<<endl;
+        cin>> aux_s;
 
-    visitante.setCondiciones(aux_s);
+        visitante.setCondiciones(aux_s);
 
-    visitantes_.push_back(visitante);
+        visitantes_.push_back(visitante);
+    }
 }
 
 void Ruta:: borrarVisitante(){
     Visitante visitante;
     string DNI;
+    int encontrado=0;
     list <Visitante>:: iterator it;
     it= visitantes_.begin();
 
@@ -111,10 +117,15 @@ void Ruta:: borrarVisitante(){
             if((*it).getDNI()==DNI){    
                 visitantes_.erase(it);
                 cout<<"El visitante ha sido eliminado"<<endl;
+                encontrado=1;
             }
             j++;
         }
-        cout<<"No se ha podido encontrar el DNI"<<endl;
+
+        if(encontrado=0)
+        {
+            cout<<"No se ha podido encontrar el DNI"<<endl;
+        }
     }
 }
 
