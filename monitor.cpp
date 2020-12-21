@@ -7,6 +7,11 @@
 
 #include "monitor.h"
 
+Monitor::Monitor()
+{
+
+}
+
 bool Monitor::buscarRuta(int identificador, Ruta &ruta)
 {   
 	for(r_=rutas_.begin();r_!=rutas_.end();r_++)

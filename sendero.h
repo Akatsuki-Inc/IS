@@ -41,6 +41,8 @@ public:
 	void setDisponibilidad(string disponibilidad){
 		disponibilidad_=disponibilidad;
 	}
+
+	~Sendero();
 };
 
 #endif

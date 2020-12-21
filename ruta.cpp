@@ -1,4 +1,8 @@
 #include "ruta.h"
+Ruta::Ruta()
+{
+    
+}
 
 bool Ruta::setTipo(string tipo)
 {

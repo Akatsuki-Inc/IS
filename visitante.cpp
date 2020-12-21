@@ -7,4 +7,13 @@
 
 #include "visitante.h"
 
+Visitante::Visitante()
+{
+
+}
+
+Visitante::~Visitante()
+{
+    
+}
 

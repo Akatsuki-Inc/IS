@@ -57,7 +57,7 @@ void Parque::anadirMonitor()
     cout<<"Introduzca el DNI"<<endl;
     cin>>aux;
 
-    if(BuscarMonitor(aux,monitor)==false)
+    if(!BuscarMonitor(aux,monitor))
     {
         monitor.setDNI(aux);
 
@@ -125,14 +125,24 @@ void Parque::borrarMonitor()
     else
     {
         do{
-            cout<<"�Seguro que quiere borrar al siguiente Monitor? Se perferan todos sus datos"<<endl;
+            cout<<"¿Seguro que quiere borrar al siguiente Monitor? Se perferan todos sus datos"<<endl;
             cout<<monitor.getNombre()<<" con DNI "<<monitor.getDNI()<<endl;
             cout<<"1.Borrar\n2.Cancelar"<<endl;
             cin>>aux2;
 
             if(aux2==1)
             {
-                Monitor_.remove(monitor);
+
+                for(m_=Monitor_.begin();m_!=Monitor_.end();m_++)
+                {
+                    if((*m_).getDNI()==monitor.getDNI())
+                    {
+                        Monitor_.erase(m_);
+        
+                    }
+                }
+
+
                 cout<<"Monitor borrado con exito"<<endl;
                 aux3++;
             }
@@ -149,7 +159,7 @@ void Parque::borrarMonitor()
 
         }while(aux3==0);
 
-    }    
+    }       
 
 }
 
@@ -166,7 +176,7 @@ void Parque::modificaMonitor()
     cout<<"Introduzca el DNI del Monitor que quiere modificar"<<endl;
     cin>>aux;
 
-    if(BuscarMonitor(aux,oldmonitor)==false)
+    if(!BuscarMonitor(aux,oldmonitor))
     {
         cout<<"El Monitor que busca no existe"<<endl;
     }
@@ -239,10 +249,10 @@ void Parque::modificaMonitor()
             {
                 for(m_=Monitor_.begin();m_!=Monitor_.end();m_++)
                 {
-                    if((*m_).getDNI()==oldmonitor.getDNI())
+                   if((*m_).getDNI()==oldmonitor.getDNI())
                     {
                         *(m_)=newmonitor;
-                    }
+                    } 
                 }
 
                 cout<<"Monitor modificado con exito"<<endl;
