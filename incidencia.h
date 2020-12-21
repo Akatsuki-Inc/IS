@@ -29,6 +29,7 @@ class Incidencia
 	public:
 		Incidencia();
 		int inline getIdentificador() const {return identificador_;}
+		int inline setIdentificador(int identificador){identificador_==identificador;}
 		string inline getSendero() const {return sendero_;}
 		void inline setSendero(string sendero){sendero_=sendero;}
 		string inline getDescripcion() const {return descripcion_;}
