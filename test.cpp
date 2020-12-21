@@ -1,7 +1,57 @@
 #include "parque.h"
+#include "incidencia.h"
+#include "monitor.h"
+#include "sendero.h"
+#include "ruta.h"
+#include "visitante.h"
 #include "gtest/gtest.h"
 
+Parque p;
 Ruta ruta;
+
+TEST(Parque, anadeIncidencia)
+{
+	Incidencia i;
+	int identificador= 203;
+	i.setIdentificador(identificador);
+	p.anadirIncidencia(i);
+	EXPECT_EQ(p.getIncidencia().size(), 1);
+}
+
+TEST(Parque, existeIncidencia)
+{
+	Incidencia i;
+	int identificador= 203;
+	i.setIdentificador(identificador);
+	p.anadirIncidencia(i);
+
+	p.anadirIncidencia(i);
+	EXPECT_EQ(p.getIncidencia().size(), 1);
+}
+
+TEST(Parque, borraIncidencia)
+{
+	Incidencia i;
+	int identificador= 203;
+	i.setIdentificador(identificador);
+	p.anadirIncidencia(i);
+
+	p.borrarIncidencia(identificador);
+	EXPECT_EQ(p.getIncidencia().size(), 0);
+}
+
+TEST(Parque, noExisteIncidencia)
+{
+	Incidencia i;
+	int identificador= 203;
+	i.setIdentificador(identificador);
+	p.anadirIncidencia(i);
+
+	p.borrarIncidencia(identificador);
+
+	p.borrarIncidencia(identificador);
+	EXPECT_EQ(p.getIncidencia().size(), 0);
+}
 
 TEST(Ruta, AnadirVisitante)
 {
