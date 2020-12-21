@@ -6,8 +6,116 @@
 #include "visitante.h"
 #include "gtest/gtest.h"
 
+Monitor monitor;
 Parque p;
 Ruta ruta;
+
+TEST(Monitor, monitorGetSets){
+	
+	monitor.setNombre("Pedro");
+	EXPECT_EQ(monitor.getNombre(), "Pedro");
+	monitor.setDNI("33XX");
+	EXPECT_EQ(monitor.getDNI(), "33XX");
+	monitor.setFechaNacimiento("12/04/1989");
+	EXPECT_EQ(monitor.getFechaNacimiento(), "12/04/1989");
+	monitor.setDireccion("Aposda. Falsa 123");
+	EXPECT_EQ(monitor.getDireccion(), "Aposda. Falsa 123");
+	monitor.setCorreo("pedro.gutierrez89@gmail.com");
+	EXPECT_EQ(monitor.getCorreo(), "pedro.gutierrez89@gmail.com");
+	monitor.setParque("Doñana");
+	EXPECT_EQ(monitor.getParque(), "Doñana");
+	monitor.setContrasena("AOFIENA93840");
+	EXPECT_EQ(monitor.getContrasena(), "AOFIENA93840");
+	monitor.setTelefono(692573835);
+	EXPECT_EQ(monitor.getTelefono(), 692573835);
+}
+
+TEST(Ruta, CrearRuta)
+{
+
+	list<Ruta> rutas;
+	list<Ruta>::iterator pos;
+
+	//Añadimos la primera ruta
+	/*Ruta a añadir
+	 * Parcial
+	 * A pie
+	 * longitud=2,5km
+	 * 3h15m
+	 * Aforo=12
+	 * Niños=No
+	*/
+	 
+
+	monitor.crearRuta();
+	rutas=monitor.getRutas();
+	pos=rutas.begin();
+
+	//Anadimos la segunda ruta
+
+	/*Ruta a añadir
+	 * Completa
+	 * En bici
+	 * 2,1
+	 * 1h15m
+	 * 7
+	 * Si
+	 */
+	 
+
+	monitor.crearRuta();
+	rutas=monitor.getRutas();
+	pos=rutas.begin();
+
+
+	//Comprobamos que haya 2 rutas
+	EXPECT_EQ(rutas.size(),2);
+
+	//Comprobamos el posisitante 1
+	EXPECT_EQ((*pos).getTipo()),"Parcial");
+	EXPECT_EQ((*pos).getModalidad(),"A pie");
+	EXPECT_EQ((*pos).getLongitud(),2500);
+	EXPECT_EQ((*pos).getDuracion(),195);
+	EXPECT_EQ((*pos).getAforo(),12);
+	EXPECT_EQ((*pos).getrutaNinos(),"No");
+
+
+	//Comprobamos la ruta 2
+	pos++;
+
+	EXPECT_EQ((*pos).getTipo()),"Completa");
+	EXPECT_EQ((*pos).getModalidad(),"En bici");
+	EXPECT_EQ((*pos).getLongitud(),2100);
+	EXPECT_EQ((*pos).getDuracion(),75);
+	EXPECT_EQ((*pos).getAforo(),7);
+	EXPECT_EQ((*pos).getrutaNinos(),"Si");
+}
+
+
+TEST(Monitor, CancelaRuta)
+{
+	list<Ruta> rutas;
+
+	/* Ruta a borrar
+	 * ID = 034
+	 */
+	 
+
+	monitor.cancelarRuta(034);
+	rutas=monitor.getRutas();
+
+	EXPECT_EQ(rutas.size(),1);
+
+	/*Ruta a borrar
+	 * ID = 034
+	 */
+	 
+
+	monitor.cancelarRuta(034);
+	rutas=monitor.getRutas();
+
+	EXPECT_EQ(rutas.size(),1);
+}
 
 TEST(Parque, anadeIncidencia)
 {
