@@ -10,26 +10,6 @@ Monitor monitor;
 Parque p;
 Ruta ruta;
 
-TEST(Monitor, monitorGetSets){
-	
-	monitor.setNombre("Pedro");
-	EXPECT_EQ(monitor.getNombre(), "Pedro");
-	monitor.setDNI("33XX");
-	EXPECT_EQ(monitor.getDNI(), "33XX");
-	monitor.setFechaNacimiento("12/04/1989");
-	EXPECT_EQ(monitor.getFechaNacimiento(), "12/04/1989");
-	monitor.setDireccion("Aposda. Falsa 123");
-	EXPECT_EQ(monitor.getDireccion(), "Aposda. Falsa 123");
-	monitor.setCorreo("pedro.gutierrez89@gmail.com");
-	EXPECT_EQ(monitor.getCorreo(), "pedro.gutierrez89@gmail.com");
-	monitor.setParque("Doñana");
-	EXPECT_EQ(monitor.getParque(), "Doñana");
-	monitor.setContrasena("AOFIENA93840");
-	EXPECT_EQ(monitor.getContrasena(), "AOFIENA93840");
-	monitor.setTelefono(692573835);
-	EXPECT_EQ(monitor.getTelefono(), 692573835);
-}
-
 TEST(Ruta, CrearRuta)
 {
 
@@ -48,14 +28,14 @@ TEST(Ruta, CrearRuta)
 	 
 
 	monitor.crearRuta();
-	rutas=monitor.getRutas();
+	rutas=monitor.getRuta();
 	pos=rutas.begin();
 
 	//Anadimos la segunda ruta
 
 	/*Ruta a añadir
 	 * Completa
-	 * En bici
+	 * En bicicleta
 	 * 2,1
 	 * 1h15m
 	 * 7
@@ -64,7 +44,7 @@ TEST(Ruta, CrearRuta)
 	 
 
 	monitor.crearRuta();
-	rutas=monitor.getRutas();
+	rutas=monitor.getRuta();
 	pos=rutas.begin();
 
 
@@ -72,25 +52,57 @@ TEST(Ruta, CrearRuta)
 	EXPECT_EQ(rutas.size(),2);
 
 	//Comprobamos el posisitante 1
-	EXPECT_EQ((*pos).getTipo()),"Parcial");
-	EXPECT_EQ((*pos).getModalidad(),"A pie");
+	EXPECT_EQ((*pos).getTipo(),"Parcial");
+	EXPECT_EQ((*pos).getModalidad(),"Pie");
 	EXPECT_EQ((*pos).getLongitud(),2500);
 	EXPECT_EQ((*pos).getDuracion(),195);
 	EXPECT_EQ((*pos).getAforo(),12);
-	EXPECT_EQ((*pos).getrutaNinos(),"No");
+	EXPECT_EQ((*pos).getrutaNinos(),false);
 
 
 	//Comprobamos la ruta 2
 	pos++;
 
-	EXPECT_EQ((*pos).getTipo()),"Completa");
-	EXPECT_EQ((*pos).getModalidad(),"En bici");
+	EXPECT_EQ((*pos).getTipo(),"Completa");
+	EXPECT_EQ((*pos).getModalidad(),"Bicicleta");
 	EXPECT_EQ((*pos).getLongitud(),2100);
 	EXPECT_EQ((*pos).getDuracion(),75);
 	EXPECT_EQ((*pos).getAforo(),7);
-	EXPECT_EQ((*pos).getrutaNinos(),"Si");
+	EXPECT_EQ((*pos).getrutaNinos(),true);
 }
 
+
+TEST(Monitor, CancelaRuta)
+{
+
+	Monitor monitor_2;
+	list<Ruta> rutas;
+	rutas=monitor_2.getRuta();
+
+	Ruta ruta1;
+	ruta1.setIdentificador(034);
+	rutas.push_back(ruta1);
+
+	/* Ruta a borrar
+	 * ID = 034
+	 */
+	EXPECT_EQ(rutas.size(),1);
+
+	monitor_2.cancelaRuta(034);
+	rutas=monitor_2.getRuta();
+
+	EXPECT_EQ(rutas.size(),0);
+
+	/*Ruta a borrar
+	 * ID = 034
+	 */
+	 
+
+	monitor_2.cancelaRuta(034);
+	rutas=monitor_2.getRuta();
+
+	EXPECT_EQ(rutas.size(),0);
+}
 
 TEST(Monitor, CancelaRuta)
 {

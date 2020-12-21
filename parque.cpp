@@ -1,5 +1,7 @@
 #include "parque.h"
 
+Parque::Parque(){}
+
 void Parque::ListarSenderos()
 {
     cout<<"Nombre"<<endl;

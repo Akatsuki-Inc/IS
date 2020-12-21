@@ -38,7 +38,9 @@ void Monitor::crearRuta(){
         cout << "6) ¿Ninos? \n";
         cout << "7) Terminar \n";
 
+
         while(eleccion!=7){
+            cin >> eleccion;
             switch (eleccion)
             {
                 

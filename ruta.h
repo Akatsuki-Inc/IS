@@ -29,6 +29,7 @@ class Ruta
 	public:
 	Ruta();
 	int inline getIdentificador() const {return identificador_;}
+	void inline setIdentificador(int identificador) {identificador_=identificador;}
         string inline getTipo() const {return tipo_;}
         bool setTipo(string tipo);
         string inline getModalidad() const{return modalidad_;}
