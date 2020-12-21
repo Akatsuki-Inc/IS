@@ -1,10 +1,5 @@
 #include "ruta.h"
 
-Ruta::Ruta() {
-	// TODO Auto-generated constructor stub
-
-}
-
 bool Ruta::setTipo(string tipo)
 {
     if((tipo=="Parcial")||(tipo=="Completa"))
@@ -48,7 +43,7 @@ bool Ruta::setFecha(time_t fecha)
     }
 }
 
-void Ruta::añadirVisitante(){
+void Ruta::anadirVisitante(){
     Visitante visitante;
     string aux_s;
     int aux_i;
@@ -74,7 +69,7 @@ void Ruta::añadirVisitante(){
 
     visitante.setNombre(aux_s);
 
-    cout<<"Introduzca el teléfono del visitante"<<endl;
+    cout<<"Introduzca el telï¿½fono del visitante"<<endl;
     cin>> aux_i;
 
     visitante.setTelefono(aux_i);
@@ -82,7 +77,7 @@ void Ruta::añadirVisitante(){
     cout<<"Introduzca la fecha de nacimiento  del visitante"<<endl;
     cin>> aux_s;
 
-    visitante.setFechaNacimiento(aux_s)
+    visitante.setFechaNacimiento(aux_s);
 
     cout<<"Introduzca las afecciones del visitante. Si no presenta ninguna,introduzca *NINGUNA*"<<endl;
     cin>> aux_s;
@@ -127,4 +122,5 @@ void Ruta:: setSenderos(list <Sendero> senderos){
 Ruta::~Ruta() {
 	// TODO Auto-generated destructor stub
 }
+
 

@@ -7,8 +7,8 @@
 
 #include "monitor.h"
 
-bool buscarRuta(int identificador, Ruta &ruta)
-{
+bool Monitor::buscarRuta(int identificador, Ruta &ruta)
+{   
 	for(r_=rutas_.begin();r_!=rutas_.end();r_++)
 	{
 		if((*r_).getIdentificador()==identificador)
@@ -28,9 +28,9 @@ void Monitor::crearRuta(){
         cout << "1) Tipo \n";
         cout << "2) Modalidad \n";
         cout << "3) Longitud \n";
-        cout << "4) Duración estimada \n";
-        cout << "5) Aforo máximo \n";
-        cout << "6) ¿Niños? \n";
+        cout << "4) Duracion estimada \n";
+        cout << "5) Aforo maximo \n";
+        cout << "6) Â¿Ninos? \n";
         cout << "7) Terminar \n";
 
         while(eleccion!=7){
@@ -68,7 +68,7 @@ void Monitor::crearRuta(){
                     break;
             
                 case 6:
-                    cout << "Introduzca si es una ruta de niños: \n";
+                    cout << "Introduzca si es una ruta de niï¿½os: \n";
                     cin >> respuesta_s;
 
                     if(respuesta_s=="si"||respuesta_s=="Si")
@@ -87,7 +87,7 @@ void Monitor::crearRuta(){
                     break;
                 
                 default:
-                    cout << "Su elección no está en el menú, por favor seleccione una opción válida \n"
+                    cout << "Su eleccion no esta en el menu, por favor seleccione una opcion valida \n";
                     break;
                 }
             }
@@ -104,9 +104,9 @@ void Monitor::actualizarRuta(int identificador){
             cout << "1) Tipo \n";
             cout << "2) Modalidad \n";
             cout << "3) Longitud \n";
-            cout << "4) Duración estimada \n";
-            cout << "5) Aforo máximo \n";
-            cout << "6) ¿Niños? \n";
+            cout << "4) Duracion estimada \n";
+            cout << "5) Aforo maximo \n";
+            cout << "6) Â¿Ninos? \n";
             cout << "7) Terminar \n";
 
             while(eleccion!=7){
@@ -134,21 +134,21 @@ void Monitor::actualizarRuta(int identificador){
                         break;
                 
                     case 4:
-                        cout << "   Duración actual: " << ruta.getDuracion();
+                        cout << "   Duracion actual: " << ruta.getDuracion();
                         cout << "Introduzca su respuesta: \n";
                         cin >> respuesta_i;
                         ruta.setDuracion(respuesta_i);
                         break;
                 
                     case 5:
-                        cout << "   Aforo máximo actual: " << ruta.getAforo();
+                        cout << "   Aforo maximo actual: " << ruta.getAforo();
                         cout << "Introduzca su respuesta: \n";
                         cin >> respuesta_i;
                         ruta.setAforo(respuesta_i);
                         break;
                 
                     case 6:
-                        cout << "   ¿Ruta de niños?: " << ruta.getrutaNinos();
+                        cout << "   Â¿Ruta de ninos?: " << ruta.getrutaNinos();
                         cout << "Introduzca su respuesta: \n";
                         cin >> respuesta_s;
                         ruta.setrutaNinos(true);
@@ -159,7 +159,7 @@ void Monitor::actualizarRuta(int identificador){
                         break;
                 
                     default:
-                        cout << "Su elección no está en el menú, por favor seleccione una opción válida \n"
+                        cout << "Su eleccion no esta en el menu, por favor seleccione una opcion valida \n";
                         break;
                     }
                 }
@@ -171,7 +171,7 @@ bool Monitor::cancelaRuta(int identificador){
     pos = rutas_.begin();
 			if(!rutas_.empty()){
 				for(long unsigned int i = 0; i<rutas_.size(); i++){
-					if((*pos).getIdentificador()==identificador()){
+					if((*pos).getIdentificador()==identificador){
 						rutas_.erase(pos);
                         return true;
 					}
@@ -193,7 +193,7 @@ Incidencia Monitor::crearIncidencia(){
     incidencia.setSendero(aux);
     cout << "\n";
 
-    cout << "Introduzca una breve descripción de la incidencia que ha encontrado:\n"
+    cout << "Introduzca una breve descripciï¿½n de la incidencia que ha encontrado:\n";
     cin >> aux;
     incidencia.setDescripcion(aux);
     cout << "\n";
@@ -212,25 +212,16 @@ Incidencia Monitor::crearIncidencia(){
     return incidencia;
 }
 
-string Monitor::generarContraseña(int size) {
-    
-    string contraseña;
-    static const char alphanum[] =
-        "0123456789"
-        "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-        "abcdefghijklmnopqrstuvwxyz";
-    
-    srand( (unsigned) time(NULL) * getpid());
+string Monitor::generarContrasena(int size) {
+    char contrasena[size];
+    srand(time(NULL));
+    for(int i=0; i < size; i++)
+        contrasena[i] = 33 + rand() % (126 - 33);
 
-    tmp_s.reserve(size);
-
-    for (int i = 0; i < size; ++i) 
-        tmp_s += alphanum[rand() % (sizeof(alphanum) - 1)];
-    
-    
-    return contraseña;
+    return contrasena;
     
 }
+
 Monitor::~Monitor() {
 
 }

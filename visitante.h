@@ -60,4 +60,4 @@ class Visitante
 		virtual ~Visitante();
 };
 
-#endif VISITANTE_H
+#endif

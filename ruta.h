@@ -20,7 +20,7 @@ class Ruta
         float longitud_;
         int duracion_;
         int aforo_;
-        bool rutaNiños_;
+        bool rutaNinos_;
         list<Visitante> visitantes_;
         list<Sendero> sendero_;
         bool aforo_disponible_;
@@ -43,10 +43,10 @@ class Ruta
         void inline setDuracion(int duracion){duracion_=duracion;}
         int inline getAforo() const {return aforo_;}
         void inline setAforo(int aforo){aforo_=aforo;}
-        bool inline getrutaNinos() const {return rutaNiños_;}
-        void inline setrutaNinos(bool opcion){rutaNiños_=opcion;}
+        bool inline getrutaNinos() const {return rutaNinos_;}
+        void inline setrutaNinos(bool opcion){rutaNinos_=opcion;}
         list<Visitante> inline getVisitantes() const {return visitantes_;}
-        void añadirVisitante();
+        void anadirVisitante();
         void borrarVisitante();
         list<Sendero> inline getSenderos() const {return sendero_;}
         void setSenderos(list <Sendero> senderos);

@@ -4,28 +4,32 @@
  *  Created on: 29 nov. 2020
  *      Author: Jose Manuel Flores Barranco
  */
-
 #ifndef MONITOR_H
 #define MONITOR_H
 #include <iostream>
 #include <string>
 #include <list>
+#include <vector>
 #include <ctime>
+#include <cstdlib>
+#include <unistd.h>
 #include "ruta.h"
-#include "parque.h"
+#include "incidencia.h"
 
 using namespace std;
 
 class Monitor 
 {
 	private:
-        string nombre_, DNI_, fechaNacimiento_, direccion_, correo_,
-        parque_, contraseña_;
-        int telefono_;
         list <Ruta> rutas_;
         list <Ruta>::iterator r_;
-
-        bool buscarRuta(int identificador,Ruta &ruta);
+		string nombre_;
+		string DNI_;
+		string fechaNacimiento_;
+		string direccion_, correo_;
+		string parque_,contrasena_;
+        int telefono_;
+        
 	public:
 		Monitor();
 
@@ -82,12 +86,12 @@ class Monitor
             parque_ = parque;
         }
 
-		inline string getContraseña(){
-            return contraseña_;
-        }
-        inline void setContraseña(string contraseña){
-            contraseña_ = contraseña;
-        }
+		inline string getContrasena(){
+            return contrasena_;
+        };
+        inline void setContrasena(string contrasena){
+            contrasena_ = contrasena;
+        };
 
         void crearRuta();
 
@@ -97,11 +101,13 @@ class Monitor
 
         Incidencia crearIncidencia();
 
-        string generarContraseña(int size);
+        string generarContrasena(int size);
 
-        void añadirRuta(Ruta ruta){rutas_.push_back(ruta);}
+        void anadirRuta(Ruta ruta){rutas_.push_back(ruta);}
+
+        bool buscarRuta(int identificador,Ruta &ruta);
 
 		virtual ~Monitor();
 };
 
-#endif MONITOR_H
+#endif

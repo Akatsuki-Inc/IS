@@ -66,11 +66,11 @@ public:
 
 	void modificarSendero();
 
-	void añadirSendero();
+	void anadirSendero();
 
 	inline list <Monitor> getMonitores(){return Monitor_;}
 
-	void añadirMonitor();
+	void anadirMonitor();
 
 	void borrarMonitor();
 
@@ -84,7 +84,7 @@ public:
 
 	void borrarIncidencia(int identificador);
 
-	void añadirIncidencia(Incidencia incidencia);
+	void anadirIncidencia(Incidencia incidencia);
 };
 
 

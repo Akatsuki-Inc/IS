@@ -48,7 +48,7 @@ bool Parque::BuscarMonitor(string DNI,Monitor &monitor)
     return false;
 }
 
-void Parque::añadirMonitor()
+void Parque::anadirMonitor()
 {
     Monitor monitor;
     string aux;
@@ -91,9 +91,9 @@ void Parque::añadirMonitor()
 
         monitor.setParque(aux);
 
-        monitor.setContraseña(monitor.generarContraseña(9));
+        monitor.setContrasena(monitor.generarContrasena(9));
 
-        cout<<"Esta es su contraseña: "<<monitor.getContraseña()<<endl;
+        cout<<"Esta es su contraseï¿½a: "<<monitor.getContrasena()<<endl;
 
         Monitor_.push_back(monitor);
     }
@@ -117,7 +117,7 @@ void Parque::borrarMonitor()
     cout<<"\nIntroduce el DNI del Monitor que quiere borrar\n"<<endl;
     cin>>aux;
 
-    if(BuscarMonitor(aux,monitor)==false)
+    if(!BuscarMonitor(aux,monitor))
     {
         cout<<"El Monitor que busca no existe"<<endl;
     }
@@ -125,7 +125,7 @@ void Parque::borrarMonitor()
     else
     {
         do{
-            cout<<"¿Seguro que quiere borrar al siguiente Monitor? Se perferan todos sus datos"<<endl;
+            cout<<"ï¿½Seguro que quiere borrar al siguiente Monitor? Se perferan todos sus datos"<<endl;
             cout<<monitor.getNombre()<<" con DNI "<<monitor.getDNI()<<endl;
             cout<<"1.Borrar\n2.Cancelar"<<endl;
             cin>>aux2;
@@ -149,7 +149,7 @@ void Parque::borrarMonitor()
 
         }while(aux3==0);
 
-    }
+    }    
 
 }
 
@@ -253,7 +253,7 @@ void Parque::modificaMonitor()
 
 }
 
-void Parque::añadirSendero()
+void Parque::anadirSendero()
 {
     Sendero sendero;
     string aux;
@@ -288,7 +288,7 @@ void Parque::añadirSendero()
 
         Sendero_.push_back(sendero);
 
-        cout<<"Sendero añadido con exito"<<endl;
+        cout<<"Sendero aï¿½adido con exito"<<endl;
     }
 
     else
@@ -297,6 +297,7 @@ void Parque::añadirSendero()
     }
 
 }
+
 
 void Parque::actualizaRutas()
 {
@@ -351,7 +352,7 @@ void Parque::modificarSendero(){
         		while(eleccion!=6){
                         cout << "Eliga una de los atributos que quiera modificar\n";
                         cout << "1) Nombre \n";
-                        cout << "2) Brebe descripción \n";
+                        cout << "2) Brebe descripciï¿½n \n";
                         cout << "3) Dificultad \n";
                         cout << "4) Longitud \n";
                         cout << "5) Disponibilidad \n";
@@ -369,9 +370,9 @@ void Parque::modificarSendero(){
                                     break;
 
                                 case 2:
-                                    cout << "Introduzca la descripición: \n";
+                                    cout << "Introduzca la descripiciï¿½n: \n";
                                     cin >> respuesta_s;
-                                    newsendero.setDescripcion(respuesta_s)
+                                    newsendero.setDescripcion(respuesta_s);
                                     break;
 
                                 case 3:
@@ -397,7 +398,7 @@ void Parque::modificarSendero(){
                                     break;
                                 
                                 default:
-                                    cout << "Su elección no está en el menú, por favor seleccione una opción válida \n"
+                                    cout << "Su elecciï¿½n no estï¿½ en el menï¿½, por favor seleccione una opciï¿½n vï¿½lida \n";
                                     break;
                              }
 
@@ -426,7 +427,7 @@ void Parque::dividirGrupo(int identificador, Monitor monitor){
     	{
     		ruta2=(*r_);
 
-    		visitantes=(*r_).getVisitantes;
+    		visitantes=(*r_).getVisitantes();
 
     		for(v=visitantes.begin();v!=visitantes.end();v++)
     		{
@@ -465,7 +466,7 @@ void Parque::cambiaMonitor(Ruta ruta, time_t aux){
 			for(r_=rutas.begin();r_!=rutas.end();r_++)
 
 			{
-				if((*r_).getFecha==aux)
+				if((*r_).getFecha()==aux)
 				{
 					libre=0;
 				}
@@ -478,7 +479,7 @@ void Parque::cambiaMonitor(Ruta ruta, time_t aux){
 
 			else
 			{
-				(*m_).añadirRuta(ruta);
+				(*m_).anadirRuta(ruta);
 				asignado=1;
 			}
 
@@ -486,6 +487,7 @@ void Parque::cambiaMonitor(Ruta ruta, time_t aux){
 	}
 
 }
+
 
 void Parque::borrarIncidencia(int identificador){
 
@@ -498,7 +500,7 @@ void Parque::borrarIncidencia(int identificador){
 	    }
 }
 
-void Parque::añadirIncidencia(Incidencia incidencia){
+void Parque::anadirIncidencia(Incidencia incidencia){
 
 	int existe=0;
 
